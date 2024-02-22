@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/avatar"
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Heart } from "./gallery/icons/Heart";
+import { Heart } from "../components/icons/Heart";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });

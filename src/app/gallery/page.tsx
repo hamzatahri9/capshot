@@ -1,8 +1,9 @@
 import UploadButton from "./upload-button";
 import cloudinary  from "cloudinary";
-import { CloudinaryImage } from "./cloudinary-image";
+import { CloudinaryImage } from "../../components/cloudinary-image";
 import { ForceRefresh } from "@/components/force-refresh";
 import { ImageGrid } from "@/components/image-grid";
+import GalleryGrid from "./gallery-grid";
 
 export type SearchResult = {
     public_id: string;
@@ -25,24 +26,9 @@ export default async function GalleryPage() {
             <h1 className="text-4xl font-bold">Gallery</h1>
             <UploadButton/>  
             </div>
-
-            <ImageGrid 
-            images={results.resources}
-            getImage={(imageData: SearchResult) => {
-                return (<CloudinaryImage
-                key={imageData.public_id}
-                imageData={imageData}
-                width="400"
-                height="300"
-                alt="an image"
-                />
-                );
-            }}
-            
-            />
+            <GalleryGrid images={results.resources} />
         </div>
     </section>
-
     
     );
 }

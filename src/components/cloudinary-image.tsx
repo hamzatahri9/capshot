@@ -1,10 +1,11 @@
 "use client"
 import { CldImage, CldImageProps } from "next-cloudinary"
 import { Heart } from "./icons/Heart"
-import { setAsFavoriteAction } from "./actions"
-import { ComponentProps, useEffect, useState, useTransition } from "react"
-import { SearchResult } from "./page"
+import { setAsFavoriteAction } from "../app/gallery/actions"
+import { useState, useTransition } from "react"
+import { SearchResult } from "../app/gallery/page"
 import { FullHeart } from "./icons/FullHeart"
+import ImageMenu from "./image-menu"
 
 export function CloudinaryImage(
   props: {
@@ -41,7 +42,8 @@ export function CloudinaryImage(
          }}
         className="absolute top-2 right-2 hover:text-red-500 cursor-pointer"/>
         )
-        }     
+        }
+        <ImageMenu /> 
     </div>
   
    )

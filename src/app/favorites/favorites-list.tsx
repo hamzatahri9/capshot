@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { CloudinaryImage } from "../gallery/cloudinary-image";
+import { CloudinaryImage } from "../../components/cloudinary-image";
 import { SearchResult } from "../gallery/page";
 import { ImageGrid } from "@/components/image-grid";
 
@@ -16,24 +16,24 @@ export default function FavoritesList({
     },  [initialResources])
 
     return (
-            <ImageGrid images={results.resources}
-             getImage={(imageData: SearchResult) => {
-                return (<CloudinaryImage
-                    key={imageData.public_id}
-                    imageData={imageData}
-                    width="400"
-                    height="300"
-                    alt="Image"
-                    onUnheart={(unheartedResource) => {
-                        setResources((currentResources) => 
-                             currentResources.filter(
-                                (resource) => resource.public_id !== unheartedResource.public_id
-                                 )
-                                ); 
-                             }}
-                            />
-                        );
-                    }}
+        <ImageGrid images={resources}
+          getImage={(imageData: SearchResult) => {
+           return (<CloudinaryImage
+            key={imageData.public_id}
+            imageData={imageData}
+            width="400"
+            height="300"
+            alt="Image"
+            onUnheart={(unheartedResource) => {
+                setResources((currentResources) => 
+                    currentResources.filter(
+                        (resource) => resource.public_id !== unheartedResource.public_id
+                         )
+                        ); 
+                        }}
+                    />
+                );
+            }}
          />        
     );
 }
