@@ -1,6 +1,6 @@
 import React from 'react'; // Import React to fix TypeScript error
 
-export function Downlaod(props: React.ComponentProps<'div'>) {
+export function Download(props: React.ComponentProps<'div'>) {
 
     return(
     <div {...props}>

@@ -1,10 +1,10 @@
 "use client"
 
-import { CloudinaryImage } from "../../components/cloudinary-image";
+import { SearchResult } from "@/app/gallery/page";
+import { CloudinaryImage } from "@/components/cloudinary-image";
 import { ImageGrid } from "@/components/image-grid";
-import { SearchResult } from "./page";
 
-export default async function GalleryGrid({images }: { images : SearchResult[]}) {
+export default async function AlbumGrid({images }: { images : SearchResult[]}) {
 
     return (
         <div>
