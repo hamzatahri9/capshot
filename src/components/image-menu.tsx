@@ -32,7 +32,7 @@ export default function ImageMenu({ image } : { image: SearchResult }) {
             console.log(downloadImage)
           }}
               variant="ghost" className="flex items-center gap-x-4 ">
-           <Download className="h-4 w-4 mr-1" />
+           <Download className="h-4 w-4 " />
             <span className="ml-2">Download</span>
            </Button>
           </DropdownMenuItem>

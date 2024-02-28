@@ -11,7 +11,8 @@ import { Heart } from "../components/icons/Heart";
 import Link from "next/link";
 import { Guestbook } from "@/components/icons/guestbook";
 import {useState} from 'react'
-
+import cloudinary from "cloudinary";
+import { Folder } from "./albums/page";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,7 +20,11 @@ export const metadata: Metadata = {
   description: "BoomSnap Gallery",
 };
 
-function SideMenu() {
+async function SideMenu() {
+  
+  const { folders } = (await cloudinary.v2.api.root_folders()) as { 
+    folders: Folder[];
+  };
 
   return (
   <div className="pb-12 w-1/4">
