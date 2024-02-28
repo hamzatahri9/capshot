@@ -5,16 +5,18 @@ import { SearchResult } from "@/app/gallery/page";
 import { Menu } from "./icons/menu";
 import { AddToAlbumDialog } from "./add-to-album-dialog";
 import downloadImage from "./downloader";
+import { useState } from "react";
 
 
 export default function ImageMenu({ image } : { image: SearchResult }) {
   const handleDownload = () => {
     downloadImage({ image });
   };
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="absolute top-2 left-2">
-      <DropdownMenu>
+      <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger>
           <Button variant="ghost" className="w-12 h-8">
             <Menu />
@@ -34,11 +36,11 @@ export default function ImageMenu({ image } : { image: SearchResult }) {
             <span className="ml-2">Download</span>
            </Button>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
+          <DropdownMenuItem asChild >
             
             {/* <FolderPlus className="h-4 w-4 mr-1" />
             <span className="ml-1">Add To Album</span> */}
-            <AddToAlbumDialog image={image} />
+            <AddToAlbumDialog image={image} onClose={() => setOpen(false)}/>
             
           </DropdownMenuItem>
         </DropdownMenuContent>

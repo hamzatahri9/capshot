@@ -16,12 +16,17 @@ import { SearchResult } from "@/app/gallery/page"
 import React from "react"
 import { addImageToAlbum } from "./actions"
 
-export function AddToAlbumDialog( {image} :{image : SearchResult}) {
+export function AddToAlbumDialog( {image, onClose} :{image : SearchResult, onClose: () => void ;}) {
   const [albumName, setAlbumName] = useState("");
   const [open,setOpen] = useState(false);
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={(newOpenState) => {
+      setOpen(newOpenState);
+      if (!newOpenState) {
+        onClose();
+      }
+      }}>
       <DialogTrigger >
        <Button variant="ghost" className="flex gap-x-4">
       <FolderPlus className="h-4 w-56 mr-1 -center"/>
@@ -49,6 +54,7 @@ export function AddToAlbumDialog( {image} :{image : SearchResult}) {
         </div>
         <DialogFooter>
           <Button onClick={async () => {
+            onClose();
             setOpen(false);
             await addImageToAlbum(image, albumName)
           }} 
